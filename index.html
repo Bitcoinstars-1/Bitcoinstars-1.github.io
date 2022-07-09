@@ -1,128 +1,78 @@
-
-<!-- user donation card -->
-<div class="cardcard -->
-<div class="card-wrap" id="card">-wrap" id="card">
- 
- <!-- user info -->
- <header class="card-user">
-  <div class="card-user-hero" :style="'background-image: url(' + userInfo.hero + ')'"></div>
-  <div class="card-user-row">
-   <div class="card-user-avatar">
-    <img :src="userInfo.avatar" :alt="userInfo.name" />
-   </div>
-   <div class="card-user-details">
-    <div class="card-user-name">{{ userInfo.name }}</div>
-    <div class="card-user-info">{{ userInfo.info }}</div>
-   </div>
-   <div class="card-user-cta">
-    <a :href="userInfo.website" target="_blank">Website</a>
-   </div>
- </header>
-
- <!-- tabs -->
- <main class="tabs-wrap">
-  <!-- tab buttons -->
-  <nav class="tabs-nav">
-   <button v-for="w in walletsList" :key="w.symbol" :class="{ 'active': w.active }" @click="selectWallet( w.symbol )">{{ w.symbol }}</button>
-  </nav>
-  <!-- tab content -->
-  <section class="tabs-info">
-   <!-- qr image -->
-   <div class="tabs-info-row">
-    <div class="tabs-info-qr">
-     <img :src="getQrImage()" :alt="wallet.name" />
+<main class="container">
+  <div class="row brnad_group">
+    <div class="col-6 brandlogo_body">
+      <h1>Crypto Pay</h1>
     </div>
-    <div class="tabs-info-details">
-     <div class="tabs-info-title">Donate {{ wallet.name }}</div>
-     <div class="tabs-info-warn">Send only {{ wallet.name }} ({{ wallet.symbol }}) to this deposit address. Sending any other coin or token to this address may result in the loss of your donation, Thanks!</div>
+    <div class="col-6 sum_body">
+      <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path
+              d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+            <path d="M0 0h24v24H0z" fill="none" />
+          </svg></span>
+      <span>0.43521 ETH</span></br>
+      <span>$97.92 USD</span>
     </div>
-   </div>
-   <!-- address input -->
-   <div class="tabs-info-input">
-    <span>Address</span>
-    <input type="text" :value="wallet.address" />
-    <button type="button" @click="copyText( wallet.address )">
-     <span v-if="w<!-- user donation card -->
-<div class="card-wrap" id="card">
- <!-- user info -->
- <header class="card-user">
-  <div class="card-user-hero" :style="'background-image: url(' + userInfo.hero + ')'"></div>
-  <div class="card-user-row">
-   <div class="card-user-avatar">
-    <img :src="userInfo.avatar" :alt="userInfo.name" />
-   </div>
-   <div class="card-user-details">
-    <div class="card-user-name">{{ userInfo.name }}</div>
-    <div class="card-user-info">{{ userInfo.info }}</div>
-   </div>
-   <div class="card-user-cta">
-    <a :href="userInfo.website" target="_blank">Website</a>
-   </div>
- </header>
- <!-- tabs -->
- <main class="tabs-wrap">
-  <!-- tab buttons -->
-  <nav class="tabs-nav">
-   <button v-for="w in walletsList" :key="w.symbol" :class="{ 'active': w.active }" @click="selectWallet( w.symbol )">{{ w.symbol }}</button>
-  </nav>
-  <!-- tab content -->
-  <section class="tabs-info">
-   <!-- qr image -->
-   <div class="tabs-info-row">
-    <div class="tabs-info-qr">
-     <img :src="getQrImage()" :alt="wallet.name" />
+  </div>
+  <hr>
+  <div class="row no-gutters info_group">
+    <h2 class='col-12'>← EDIT PAYMENT</H2>
+    <h3 class='col-12'>ASSET</h3>
+    <div class="col-6 asset_body">
+      <span><svg xmlns="http://www.w3.org/2000/svg" width="14.739" height="24" viewBox="0 0 14.739 24">
+            <g transform="translate(-720.6 0.001)">
+              <path d="M7.367,4.714,14.738,0,7.367,11.242ZM0,0,7.367,4.714v6.528Z"
+                transform="translate(720.6 12.757)" />
+              <path d="M7.367,0l7.364,11.77L7.367,15.961ZM0,11.77,7.367,0V15.961Z"
+                transform="translate(720.6 -0.001)" />
+            </g>
+          </svg></span>
+      <span>Ethereum (ETH)</span>
     </div>
-    <div class="tabs-info-details">
-     <div class="tabs-info-title">Donate {{ wallet.name }}</div>
-     <div class="tabs-info-warn">Send only {{ wallet.name }} ({{ wallet.symbol }}) to this deposit address. Sending any other coin or token to this address may result in the loss of your donation, Thanks!</div>
+    <div class="col-6 asset_body">
+      <span><svg xmlns="http://www.w3.org/2000/svg" width="14.739" height="24" viewBox="0 0 14.739 24">
+            <g transform="translate(-720.6 0.001)">
+              <path d="M7.367,4.714,14.738,0,7.367,11.242ZM0,0,7.367,4.714v6.528Z"
+                transform="translate(720.6 12.757)" />
+              <path d="M7.367,0l7.364,11.77L7.367,15.961ZM0,11.77,7.367,0V15.961Z"
+                transform="translate(720.6 -0.001)" />
+            </g>
+          </svg></span>
+      <span>Bitcoin (BTC)</span>
     </div>
-   </div>
-   <!-- address input -->
-   <div class="tabs-info-input">
-    <span>Address</span>
-    <input type="text" :value="wallet.address" />
-    <button type="button" @click="copyText( wallet.address )">
-     <span v-if="wallet.copied">✔ Copied</span>
-     <span v-else>✚ Copy</span>
-    </button>
-   </div>
-   <!-- coin stats -->
-   <div class="tabs-info-stats">
-    <div>
-     <span class="txt-label">Price USD</span> <br />
-     <span>${{ stats.price | toMoney( 2 ) }}</span>
+  </div>
+  <div class="row no-gutters fromTo_group">
+    <h3 class='col-6'>FROM</h3>
+    <h3 class='col-6'>TO</h3>
+    <div class="col-6 from_body">
+      <span>General Account</span></br>
+      <span>0x3e...8C5c</span>
+      </div>
+     <div class="col-6 to_body">
+      <span>Store Name</span></br>
+      <span>0xd3...4hgr</span>
     </div>
-    <div>
-     <span class="txt-label">Market Cap</span> <br />
-     <span>{{ stats.cap | toMoney( 0 ) }}</span>
+  </div>
+  <div class="row no-gutters transaction_group">
+    <h3 class='col-12'>TRANSACTION FEE</h3>
+    <div class="col-4 transaction_body">
+      <span>slow</span></br>
+      <span>0.00008 ETH</span>
     </div>
-    <div>
-     <span class="txt-label">Supply</span> <br />
-     <span>{{ stats.supply | toMoney( 0 ) }}</span>
+    <div class="col-4 transaction_body">
+      <span>Average</span></br>
+      <span>0.00021 ETH</span>
     </div>
-   </div>
-  </section>
- </main>
-allet.copied">✔ Copied</span>
-     <span v-else>✚ Copy</span>
-    </button>
-   </div>
-  <!-- coin stats -->
-   <div class="tabs-info-stats">
-    <div>
-     <span class="txt-label">Price USD</span> <br />
-     <span>${{ stats.price | toMoney( 2 ) }}</span>
+    <div class="col-4 transaction_body">
+      <span>fast</span></br>
+      <span>0.00042 ETH</span>
     </div>
-    <div>
-     <span class="txt-label">Market Cap</span> <br />
-     <span>{{ stats.cap | toMoney( 0 ) }}</span>
+  </div>
+  <div class="row no-gutters submit_group">
+    <div class="submit_body">
+      <span>CANCEL</SPAN>
     </div>
-    <div>
-     <span class="txt-label">Supply</span> <br />
-     <span>{{ stats.supply | toMoney( 0 ) }}</span>
+    <div class="submit_body">
+      <span>CONTINUE</SPAN>
     </div>
-   </div>
-  </section>
- </main>
-
-</div>
+  </div>
+</main>
