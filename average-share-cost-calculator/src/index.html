@@ -1,1 +1,104 @@
+<div class="site-header">
+  <div class="branding">
+  Average Share Cost Calculator
+<!--     <h1 class="page-title">Average Stock Price Calculator</h1>-->
+ 
+  </div>
+</div>
 
+<div class="wrapper" ng-app="app" ng-controller="MainCtrl">
+  <h2 class="section-title">Existing Investment</h2>
+  <div class="card-listing">
+    <div class="card">
+      <div class="card-header">
+        <label>Current Average</label>
+        <div>{{currentAverage | currency:USD$}}</div>
+      </div>
+      <div class="card-body">
+        <label>Current Investment</label>
+        <input type="number" step=".01" min=".00" ng-model="currentInvestment" ng-change="getCurrentAverage()">
+        <label>Current Shares</label>
+        <input type="number" step="1" min="0"  ng-model="currentShares" ng-change="getCurrentAverage()">
+      </div>
+    </div>
+    <div class="card"> 
+      <div class="card-header">
+        <label>Current Investment</label>
+        <div>{{currentInvestment | currency:USD$}}</div>
+      </div>
+      <div class="card-body">
+        <label>Current Average</label>
+        <input type="number" step=".01" min=".00"  ng-model="currentAverage" ng-change="getCurrentInvestment()">
+        <label>Current Shares</label>
+        <input type="number" step=".01" min=".00"  ng-model="currentShares" ng-change="getCurrentInvestment()">
+      </div>
+    </div>
+    <div class="card"> 
+      <div class="card-header">
+        <label>Current Shares</label>
+        <div>{{currentShares | number:0}}</div>
+      </div>
+      <div class="card-body">
+        <label>Current Investment</label>
+        <input type="number" step=".01" min=".00" ng-model="currentInvestment" ng-change="getCurrentShares()">
+        <label>Current Average</label>
+        <input type="number" step=".01" min=".00" ng-model="currentAverage" ng-change="getCurrentShares()">
+      </div>
+    </div>       
+  </div>
+  <h2 class="section-title">Potential Investment</h2>  
+  <div class="card-listing">
+    <div class="card">
+      <div class="card-header">
+        <label>Current Price</label>
+        <input type="number" step=".01" min=".00" placeholder="current price" ng-model="currentPrice">  
+      </div>
+      <div class="card-body">
+        <label>Ticker Symbol</label>
+        <input ng-model="tickerSymbol">
+        <button ng-click="getCurrentPrice()">Get Current Price</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">      
+        <label>New Investment</label>
+        {{newInvestment | currency:USD$}}
+      </div>
+      <div class="card-body">
+        <label>Current Price</label>    
+        <input type="number" step=".01" min=".00" ng-model="currentPrice" ng-change="getNewInvestment()">      
+        <label>New Shares</label>    
+        <input type="number" step="1" min="0" ng-model="newShares" ng-change="getNewInvestment()">  
+      </div>
+    </div> 
+    <div class="card">
+      <div class="card-header">
+        <label>New Shares</label>
+        {{newShares | number:0}}
+      </div>
+      <div class="card-body">
+        <label>Current Price</label>    
+        <input type="number" step=".01" min=".00" ng-model="currentPrice" ng-change="getNewShares()">      
+        <label>New Investment</label>    
+        <input type="number" step=".01" min=".00" ng-model="newInvestment" ng-change="getNewShares()">  
+      </div>
+    </div>      
+  </div>
+
+  <h2 class="section-title">Estimated Totals</h2>  
+    <div class="estimates">
+      <div class="estimate">
+        <label>New Share Average</label>
+        {{(currentInvestment + newInvestment)/(currentShares + newShares) | currency:USD$}}
+      </div>
+      <div class="estimate">
+
+        <label>Total Shares</label>
+        {{currentShares + newShares | number:0}} 
+      </div>
+      <div class="estimate">      
+        <label>Total Investment</label>
+        {{currentInvestment + newInvestment | currency:USD$}}
+      </div>
+    </div>
+  </div>
